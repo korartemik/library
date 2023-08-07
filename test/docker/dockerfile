@@ -1,0 +1,12 @@
+# Используем официальный MySQL образ.
+FROM mysql:5.7
+
+# Устанавливаем переменные окружения
+#todo: добавить динамическую подстановку параметром
+ENV MYSQL_ROOT_PASSWORD=sho
+ENV MYSQL_DATABASE=test_service
+ENV MYSQL_USER=test_service
+ENV MYSQL_PASSWORD=test_service
+
+# Миграция бд
+COPY ./docker/sql-scripts.sql /docker-entrypoint-initdb.d/

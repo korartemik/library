@@ -1,0 +1,34 @@
+syntax = "proto3";
+package library.book.service.v1;
+option go_package = "library/libraryapi/v1";
+
+import "library/v1/book_model.proto";
+import "google/api/annotations.proto";
+
+service LibraryService {
+
+  rpc GetBooksByTitle(GetByTitleRequest) returns (GetBooksResponse) {
+    option (google.api.http) = {
+      get: "/v1/books/title"
+    };
+  }
+
+  rpc GetBooksByAuthor(GetByAuthorRequest) returns (GetBooksResponse) {
+    option (google.api.http) = {
+      get: "/v1/books/author"
+    };
+  }
+}
+
+message GetByTitleRequest {
+  string title = 1;
+}
+
+message GetByAuthorRequest {
+  string author = 1;
+}
+
+message GetBooksResponse {
+  repeated library.book.model.v1.Book books = 1;
+}
+

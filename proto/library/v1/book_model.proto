@@ -1,0 +1,8 @@
+syntax = "proto3";
+package library.book.model.v1;
+option go_package = "library/libraryapi/v1";
+
+message Book {
+  string title = 1;
+  string author = 2;
+}
